@@ -472,12 +472,14 @@ h2.procurement-title,
 .categories-section {
   padding: 72px 80px;
   background: #ffffff;
+  
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 22px;
+
 }
 
 .cat-card {
