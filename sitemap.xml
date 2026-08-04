@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kumarglobal.in/</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.kumarglobal.in/pages/about.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kumarglobal.in/pages/services.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kumarglobal.in/pages/contact.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kumarglobal.in/pages/privacy-policy.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.kumarglobal.in/pages/terms-of-use.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.kumarglobal.in/pages/cookies.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>
