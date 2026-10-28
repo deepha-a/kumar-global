@@ -39,50 +39,69 @@ document.querySelectorAll('.footer-links a, .footer-legal a').forEach(link => {
 });
 
 
-const copyEl = document.querySelector('.footer-copy');
-if (copyEl) {
-  const currentYear = new Date().getFullYear();
-  copyEl.innerHTML = copyEl.innerHTML.replace('2024', currentYear);
+const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
 }
 
 // contact form
-
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
+const submitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbxLjaoefupihBPQBGdo6RIacYW2nS1RHoyMrFavbiR22F-dvNI1A5jokLYH42RDB2F9og/exec";
 
-contactForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const formData = {
-    fullName: document.getElementById("fullName").value,
-    companyName: document.getElementById("companyName").value,
-    phone: document.getElementById("phone").value,
-    email: document.getElementById("email").value,
-    requirement: document.getElementById("requirement").value,
-    message: document.getElementById("message").value
-  };
-
-  try {
-    const response = await fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(formData)
-    });
-
-    const result = await response.json();
-
-    if (result.result === "success") {
-      formStatus.textContent = "Inquiry submitted successfully!";
-      formStatus.style.color = "green";
-      contactForm.reset();
-    } else {
-      formStatus.textContent = "Submission failed.";
-      formStatus.style.color = "red";
+    // Honeypot spam check
+    const gotcha = contactForm.querySelector('input[name="_gotcha"]');
+    if (gotcha && gotcha.value) {
+      return;
     }
 
-  } catch (error) {
-    formStatus.textContent = "Network error.";
-    formStatus.style.color = "red";
-  }
-});
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : "Submit Inquiry \u2192";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+    }
+    formStatus.textContent = "";
+
+    const formData = {
+      fullName: document.getElementById("fullName").value,
+      companyName: document.getElementById("companyName").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      requirement: document.getElementById("requirement").value,
+      message: document.getElementById("message").value
+    };
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+        formStatus.textContent = "Inquiry submitted successfully!";
+        formStatus.style.color = "green";
+        contactForm.reset();
+      } else {
+        formStatus.textContent = "Submission failed. Please try again.";
+        formStatus.style.color = "red";
+      }
+
+    } catch (error) {
+      formStatus.textContent = "Network error. Please try again or email us directly.";
+      formStatus.style.color = "red";
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }
+    }
+  });
+}

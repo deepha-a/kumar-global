@@ -477,7 +477,7 @@ h2.procurement-title,
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 
 }
@@ -517,7 +517,13 @@ h2.procurement-title,
   margin-bottom: 11px;
 }
 
-.cat-label svg { flex-shrink: 0; }
+.cat-label img,
+.cat-label svg {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
 .cat-label h3 {
   font-size: 15px;

@@ -341,7 +341,7 @@ body { font-family: 'Inter', sans-serif; }
 }
 .contact-hero {
     min-height: 70vh;
-    background: linear-gradient(rgba(8, 42, 66, 0.65), rgba(8, 42, 66, 0.65)), url("/assets/images/contact\ hero.png") center/cover no-repeat;
+    background: linear-gradient(rgba(8, 42, 66, 0.65), rgba(8, 42, 66, 0.65)), url("/assets/images/contact-hero.png") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
